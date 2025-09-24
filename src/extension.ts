@@ -113,6 +113,44 @@ function isSupportedFileType(languageId: string): boolean {
     return supportedTypes.includes(languageId) || supportedTypes.includes(languageId.toLowerCase());
 }
 
+function getFileTypeByExtension(fileName: string): string | null {
+    const extension = fileName.split('.').pop()?.toLowerCase();
+    const extensionMap: { [key: string]: string } = {
+        'toml': 'toml',
+        'yaml': 'yaml',
+        'yml': 'yaml',
+        'json': 'json',
+        'js': 'javascript',
+        'ts': 'typescript',
+        'py': 'python',
+        'md': 'markdown',
+        'txt': 'plaintext',
+        'ini': 'ini',
+        'conf': 'conf',
+        'sh': 'bash',
+        'sql': 'sql',
+        'css': 'css',
+        'scss': 'scss',
+        'html': 'html',
+        'xml': 'xml'
+    };
+    return extension ? extensionMap[extension] || null : null;
+}
+
+function getActualLanguageId(document: vscode.TextDocument): string {
+    let languageId = document.languageId;
+
+    // 如果VSCode识别为plaintext，尝试根据文件扩展名判断真实类型
+    if (languageId === 'plaintext') {
+        const detectedType = getFileTypeByExtension(document.fileName);
+        if (detectedType) {
+            languageId = detectedType;
+        }
+    }
+
+    return languageId;
+}
+
 export function activate(context: vscode.ExtensionContext) {
     // 注册切换注释命令
     const toggleCommentDisposable = vscode.commands.registerCommand('quickComment.toggleComment', () => {
@@ -128,7 +166,7 @@ export function activate(context: vscode.ExtensionContext) {
 
         const document = editor.document;
         const selection = editor.selection;
-        const languageId = document.languageId;
+        const languageId = getActualLanguageId(document);
 
         if (!isSupportedFileType(languageId)) {
             vscode.window.showInformationMessage(`文件类型 "${languageId}" 未在支持列表中，请在设置中添加`);
