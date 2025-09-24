@@ -2,7 +2,7 @@
   "name": "quick-comment-toggle",
   "displayName": "Quick Comment Toggle",
   "description": "快速批量注释/取消注释多种文件格式，支持30+种文件类型",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "lhaizhu",
   "author": "lhaizhu",
   "license": "MIT",
