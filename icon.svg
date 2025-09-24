@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!-- 背景圆形 -->
+  <circle cx="64" cy="64" r="56" fill="#2D5AA0" stroke="#1e3a8a" stroke-width="4"/>
+
+  <!-- 注释符号 // -->
+  <g transform="translate(32, 45)">
+    <!-- 第一个斜杠 -->
+    <rect x="8" y="0" width="6" height="38" rx="3" fill="#FFFFFF" transform="rotate(15 11 19)"/>
+    <!-- 第二个斜杠 -->
+    <rect x="24" y="0" width="6" height="38" rx="3" fill="#FFFFFF" transform="rotate(15 27 19)"/>
+  </g>
+
+  <!-- 装饰性代码行 -->
+  <g transform="translate(20, 75)">
+    <rect x="0" y="0" width="32" height="3" rx="1.5" fill="#E0E7FF" opacity="0.8"/>
+    <rect x="0" y="8" width="48" height="3" rx="1.5" fill="#E0E7FF" opacity="0.6"/>
+    <rect x="0" y="16" width="24" height="3" rx="1.5" fill="#E0E7FF" opacity="0.4"/>
+  </g>
+
+  <!-- 高光效果 -->
+  <ellipse cx="48" cy="40" rx="12" ry="8" fill="#FFFFFF" opacity="0.2"/>
+</svg>

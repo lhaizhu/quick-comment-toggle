@@ -24,8 +24,9 @@
     "多语言",
     "注释"
   ],
+  "icon": "icon.png",
   "galleryBanner": {
-    "color": "#1e1e1e",
+    "color": "#2D5AA0",
     "theme": "dark"
   },
   "engines": {
