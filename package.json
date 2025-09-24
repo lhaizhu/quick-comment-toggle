@@ -1,0 +1,165 @@
+{
+  "name": "quick-comment-toggle",
+  "displayName": "Quick Comment Toggle",
+  "description": "快速批量注释/取消注释多种文件格式，支持30+种文件类型",
+  "version": "1.0.0",
+  "publisher": "lhaizhu",
+  "author": "lhaizhu",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lhaizhu/quick-comment-toggle.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lhaizhu/quick-comment-toggle/issues"
+  },
+  "homepage": "https://github.com/lhaizhu/quick-comment-toggle#readme",
+  "keywords": [
+    "comment",
+    "batch",
+    "toggle",
+    "toml",
+    "json",
+    "yaml",
+    "多语言",
+    "注释"
+  ],
+  "galleryBanner": {
+    "color": "#1e1e1e",
+    "theme": "dark"
+  },
+  "engines": {
+    "vscode": "^1.74.0"
+  },
+  "categories": [
+    "Other",
+    "Formatters",
+    "Keymaps"
+  ],
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "quickComment.toggleComment",
+        "title": "批量切换注释",
+        "category": "Quick Comment"
+      },
+      {
+        "command": "quickComment.openSettings",
+        "title": "打开设置",
+        "category": "Quick Comment"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "quickComment.toggleComment",
+        "key": "cmd+/",
+        "mac": "cmd+/",
+        "win": "ctrl+/",
+        "linux": "ctrl+/",
+        "when": "editorTextFocus && config.quickComment.enabled"
+      }
+    ],
+    "configuration": {
+      "title": "Quick Comment Extension",
+      "properties": {
+        "quickComment.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "启用或禁用批量注释功能"
+        },
+        "quickComment.addSpaceAfterComment": {
+          "type": "boolean",
+          "default": true,
+          "description": "在注释符后添加空格"
+        },
+        "quickComment.supportedFileTypes": {
+          "type": "array",
+          "default": [
+            "javascript",
+            "typescript",
+            "python",
+            "java",
+            "c",
+            "cpp",
+            "csharp",
+            "go",
+            "rust",
+            "php",
+            "swift",
+            "kotlin",
+            "bash",
+            "shell",
+            "sh",
+            "zsh",
+            "fish",
+            "powershell",
+            "perl",
+            "ruby",
+            "yaml",
+            "yml",
+            "toml",
+            "ini",
+            "conf",
+            "properties",
+            "dockerfile",
+            "gitignore",
+            "html",
+            "xml",
+            "svg",
+            "css",
+            "scss",
+            "sass",
+            "less",
+            "json",
+            "jsonc",
+            "sql",
+            "mysql",
+            "postgresql",
+            "lua",
+            "vim",
+            "r",
+            "matlab",
+            "tex",
+            "latex"
+          ],
+          "description": "支持的文件类型列表"
+        }
+      }
+    },
+    "menus": {
+      "commandPalette": [
+        {
+          "command": "quickComment.toggleComment",
+          "when": "editorTextFocus"
+        },
+        {
+          "command": "quickComment.openSettings"
+        }
+      ],
+      "editor/context": [
+        {
+          "command": "quickComment.toggleComment",
+          "when": "editorTextFocus && config.quickComment.enabled",
+          "group": "1_modification"
+        }
+      ]
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "package": "vsce package",
+    "publish": "vsce publish"
+  },
+  "devDependencies": {
+    "@types/node": "16.x",
+    "@types/vscode": "^1.74.0",
+    "@vscode/vsce": "^2.32.0",
+    "typescript": "^4.9.4"
+  }
+}
