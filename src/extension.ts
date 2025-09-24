@@ -6,6 +6,8 @@ const commentConfigs: { [key: string]: { line?: string; block?: { start: string;
     'javascript': { line: '//', block: { start: '/*', end: '*/' } },
     'typescript': { line: '//', block: { start: '/*', end: '*/' } },
     'python': { line: '#' },
+    'markdown': { block: { start: '<!--', end: '-->' } },
+    'plaintext': { line: '#' },
     'java': { line: '//', block: { start: '/*', end: '*/' } },
     'c': { line: '//', block: { start: '/*', end: '*/' } },
     'cpp': { line: '//', block: { start: '/*', end: '*/' } },

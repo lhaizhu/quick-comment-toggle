@@ -83,6 +83,8 @@
             "javascript",
             "typescript",
             "python",
+            "markdown",
+            "plaintext",
             "java",
             "c",
             "cpp",
