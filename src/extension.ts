@@ -37,6 +37,7 @@ const commentConfigs: { [key: string]: { line?: string; block?: { start: string;
     'properties': { line: '#' },
     'dockerfile': { line: '#' },
     'gitignore': { line: '#' },
+    'hosts': { line: '#' },
 
     // 标记语言
     'html': { block: { start: '<!--', end: '-->' } },
@@ -114,6 +115,12 @@ function isSupportedFileType(languageId: string): boolean {
 }
 
 function getFileTypeByExtension(fileName: string): string | null {
+    // 特殊文件名处理（无扩展名的文件）
+    const baseName = fileName.split('/').pop() || fileName;
+    if (baseName === 'hosts') {
+        return 'hosts';
+    }
+
     const extension = fileName.split('.').pop()?.toLowerCase();
     const extensionMap: { [key: string]: string } = {
         'toml': 'toml',
